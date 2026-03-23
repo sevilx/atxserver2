@@ -1,9 +1,15 @@
 ## atxserver2
 移动设备管理平台(支持Android和iOS), 欢迎加入QQ群交流
 
+项目已经不开发了。请选择别的平台吧。
+
 ![image-20190619180012756](docs/qq.png)
 
 ![img](static/favicon-dark.png)
+
+虽然但是还是更新了一下
+
+- 2026/3/23 更新了一下手动安装方式，使用`uv run main.py`代替`python main.py`
 
 ## 部署方案1 （docker-compose方式）
 代码Clone到本地
@@ -21,28 +27,29 @@ docker-compose up
 
 **Step 2**
 
-安装并启动Server，这里需要Python3.6以上版本
+安装并启动Server
 
 先将代码clone到本地，使用下面的方法安装依赖
 
 ```bash
-pip3 install -r requirements.txt
+pip install uv
+uv run main.py
 ```
 
 最简单的启动方法 （默认连接的rethinkdb地址 `localhost:28015`)
 
 ```bash
 # 启动方式，这也是最简单的启动方法
-python3 main.py
+uv run main.py
 
 # 指定认证方式
-python3 main.py --auth simple # 默认是一个非常simple的认证，输入邮箱就可以
-python3 main.py --auth openid # 网易内部使用
-python3 main.py --auth github # github 认证, 需要在 `settings.py` 里面配置 `client_id` 和 `client_secret` 相关信息
+uv run main.py --auth simple # 默认是一个非常simple的认证，输入邮箱就可以
+uv run main.py --auth openid # 网易内部使用
+uv run main.py --auth github # github 认证, 需要在 `settings.py` 里面配置 `client_id` 和 `client_secret` 相关信息
 # 其他的认证方式还有待添加，非常欢迎PR
 
 # 设置监听端口
-python3 main.py --port 4000 # 默认监听的就是这个地址
+uv run main.py --port 4000 # 默认监听的就是这个地址
 
 # 默认支持运行在Nginx下，支持 X-Real-Ip/X-Forwarded-For
 # 如果不需要可以通过 --no-xheaders 关闭该功能
@@ -59,7 +66,7 @@ export RDB_USER=admin
 export RDB_PASSWD=
 export RDB_DBNAME=atxserver2
 
-python3 main.py
+uv run main.py
 ```
 
 启动之后，浏览器打开 <http://localhost:4000>，完成认证之后就可以顺利的看到设备列表页了。不过目前还是空的，什么都没有。

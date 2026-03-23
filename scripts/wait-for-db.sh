@@ -2,4 +2,4 @@
 #
 
 CURDIR=$(dirname $0)
-python $CURDIR/wait_for_rethinkdb.py && "$@"
+uv run $CURDIR/wait_for_rethinkdb.py && "$@"

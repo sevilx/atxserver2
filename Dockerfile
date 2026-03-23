@@ -1,9 +1,9 @@
-FROM python:3.6
+FROM python:3.9
 
 ADD . /app
 WORKDIR /app
 
-RUN pip install -r requirements.txt
+RUN pip install uv && uv sync
 
 ENTRYPOINT [ "bash", "scripts/wait-for-db.sh" ]
-CMD ["python", "-u", "main.py"]
+CMD ["uv", "run", "main.py"]

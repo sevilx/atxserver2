@@ -1,0 +1,19 @@
+[project]
+name = "atxserver2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9,<3.10"
+dependencies = [
+    "apkutils2>=1.0.0",
+    "bunch>=1.0.1",
+    "logzero>=1.7.0",
+    "requests>=2.32.5",
+    "rethinkdb==2.4.2.post1",
+    "six>=1.17.0",
+    "setuptools>=60.0.0,<70.0.0",
+    "tornado>=5.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["web"]
